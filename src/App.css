@@ -33,7 +33,18 @@ a {
 }
 
 .navbar li {
-  color: #47E10C;
+  color: white;
   text-transform: uppercase;
 }
 
+.active-link-1 li {
+  color: #47E10C; 
+}
+
+.active-link-2 li {
+  color: blue; 
+}
+
+.active-link-3 li {
+  color: red; 
+}
