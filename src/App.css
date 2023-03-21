@@ -17,8 +17,7 @@ a {
 }
 
 .navbar {
-  height: 80px;
-  border: 2px dashed red;
+  height: 100px;
 }
 
 .navbar ul {
@@ -27,24 +26,39 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
-  font-size: 20px;
+  gap: 100px;
+  font-size: 40px;
   list-style: none;
 }
 
+@media (max-width: 640px) {
+  .navbar ul {
+    font-size: 25px;
+    gap: 50px;
+  }
+}
+
+
+@media (max-width: 450px) {
+  .navbar ul {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 350px) {
+  .navbar ul {
+    font-size: 15px;
+    gap: 20px;
+  }
+}
+
 .navbar li {
-  color: white;
   text-transform: uppercase;
 }
 
-.active-link-1 li {
-  color: #47E10C; 
-}
-
-.active-link-2 li {
-  color: blue; 
-}
-
-.active-link-3 li {
-  color: red; 
+.App .main-app {
+  width: 100vw;
+  height: calc(100vh - 100px);
+  display: grid;
+  place-items: center;
 }
