@@ -2,12 +2,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Nav = () => {
-  const [activeLinks, setActiveLinks] = useState([false, false, false]);
+  const [activeLinks, setActiveLinks] = useState<string>('/');
 
-  const handleClick = (index:number) => {
-    const newActiveLinks = [...activeLinks];
-    newActiveLinks[index] = true;
-    setActiveLinks(newActiveLinks);
+    const handleClick = (link: string) => {
+        setActiveLinks(link)
   };
 
   return (
@@ -15,22 +13,22 @@ const Nav = () => {
       <ul>
         <Link
           to="/"
-          className={activeLinks[0] ? "active-link-1" : ""}
-          onClick={() => handleClick(0)}
+          style={{ color: activeLinks === "/" ? "#47E10C" : "white" }}
+          onClick={() => handleClick("/")}
         >
           <li>Cube</li>
         </Link>
         <Link
           to="/sphere"
-          className={activeLinks[1] ? "active-link-2" : ""}
-          onClick={() => handleClick(1)}
+          style={{ color: activeLinks === "/sphere" ? "blue" : "white" }}
+          onClick={() => handleClick("/sphere")}
         >
           <li>Sphere</li>
         </Link>
         <Link
           to="/cylinder"
-          className={activeLinks[2] ? "active-link-3" : ""}
-          onClick={() => handleClick(2)}
+          style={{ color: activeLinks === "/cylinder" ? "red" : "white" }}
+          onClick={() => handleClick("/cylinder")}
         >
           <li>Cylinder</li>
         </Link>
