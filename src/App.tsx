@@ -9,11 +9,13 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <Routes>
-        <Route path="/" element={<CubeComponent />} />
-        <Route path="/cylinder" element={<CylinderComponent />} />
-        <Route path="/sphere" element={<SphereComponent />} />
-      </Routes>
+      <div className="main-app">
+        <Routes>
+          <Route path="/" element={<CubeComponent />} />
+          <Route path="/cylinder" element={<CylinderComponent />} />
+          <Route path="/sphere" element={<SphereComponent />} />
+        </Routes>
+      </div>
     </div>
   );
 }
