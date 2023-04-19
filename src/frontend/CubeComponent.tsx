@@ -6,7 +6,7 @@ const CubeComponent = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // scene
+    // creating the scenery
     const scene = new THREE.Scene();
 
     // creating the cube
@@ -15,7 +15,7 @@ const CubeComponent = () => {
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    // Camera
+    // adding the camera to bring out the visuals
     const camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
@@ -25,11 +25,11 @@ const CubeComponent = () => {
     camera.position.z = 5;
     scene.add(camera);
 
-    // renderer
+    // renderer, used to display the model on the canvas (i.e the scene)
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current! });
-    renderer.setSize(window.innerWidth, window.innerHeight);    
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
-    // controls
+    // controls, allows the camera orbit around the model, and is controlled by the user
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.enablePan = false;
@@ -39,7 +39,7 @@ const CubeComponent = () => {
       requestAnimationFrame(animate);
 
       cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+       cube.rotation.y += 0.01;
 
       renderer.render(scene, camera);
     };

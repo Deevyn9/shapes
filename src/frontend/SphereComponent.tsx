@@ -6,12 +6,15 @@ const SphereComponent = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // scene
+    // creating scene
     const scene = new THREE.Scene();
 
     // creating the sphere
     const geometry = new THREE.SphereGeometry(6, 64, 64);
-    const material = new THREE.MeshStandardMaterial({ color: "blue", roughness: 0.5 });
+    const material = new THREE.MeshStandardMaterial({
+      color: "blue",
+      roughness: 0.5,
+    });
     const sphere = new THREE.Mesh(geometry, material);
     scene.add(sphere);
 
@@ -26,7 +29,7 @@ const SphereComponent = () => {
     light.position.set(0, 10, 10);
     scene.add(light);
 
-    // camera
+    // adding the camera to bring out the visuals
     const camera = new THREE.PerspectiveCamera(
       45,
       sizes.width / sizes.height,
@@ -36,19 +39,19 @@ const SphereComponent = () => {
     camera.position.z = 20;
     scene.add(camera);
 
-    // renderer
+    // renderer, used to display the model on the canvas (i.e the scene)
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current! });
     renderer.setSize(sizes.width, sizes.height);
-    renderer.setPixelRatio(2)
-    renderer.render(scene, camera)
+    renderer.setPixelRatio(2);
+    renderer.render(scene, camera);
 
-    // controls
+    // controls, allows the camera orbit around the model, and is controlled by the user
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true  
-    controls.enablePan = false
-    controls.enableZoom = false
-    controls.autoRotate = true
-    controls.autoRotateSpeed = 5
+    controls.enableDamping = true;
+    controls.enablePan = false;
+    controls.enableZoom = false;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 5;
 
     // resize
     window.addEventListener("resize", () => {
@@ -60,11 +63,10 @@ const SphereComponent = () => {
       camera.updateProjectionMatrix();
       renderer.setSize(sizes.width, sizes.height);
     });
- 
 
     // rerendering the canvas when screen is adjusted
     const loop = () => {
-      controls.update()
+      controls.update();
       renderer.render(scene, camera);
       window.requestAnimationFrame(loop);
     };

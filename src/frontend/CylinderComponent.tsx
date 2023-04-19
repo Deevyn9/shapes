@@ -6,7 +6,7 @@ const CylinderComponent = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // scene
+    // creating the scenery
     const scene = new THREE.Scene();
 
     // creating the cylinder
@@ -15,7 +15,7 @@ const CylinderComponent = () => {
     const cylinder = new THREE.Mesh(geometry, material);
     scene.add(cylinder);
 
-    // camera
+    // adding the camera to bring out the visuals
     const camera = new THREE.PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
@@ -25,11 +25,11 @@ const CylinderComponent = () => {
     camera.position.z = 20;
     scene.add(camera);
 
-    // renderer
+    // renderer, used to display the model on the canvas (i.e the scene)
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current! });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    // controls
+    // controls, allows the camera orbit around the model, and is controlled by the user
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true
     controls.enablePan = false
